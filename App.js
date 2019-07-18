@@ -5,14 +5,19 @@ import {
   ApplicationProvider,
   Layout,
   Button,
-  Modal
+  Modal,
+  BottomNavigation,
+  BottomNavigationTab
 } from "react-native-ui-kitten";
+
+import TestBar from "./TestBar.js"
 
 export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      modalVisible: false
+      modalVisible: false,
+      selectedIndex: 0
     };
   }
 
@@ -21,6 +26,10 @@ export default class App extends React.Component {
       ...this.state,
       modalVisible: !this.state.modalVisible
     });
+  };
+
+  onTabSelect = (selectedIndex) => {
+    this.setState({ selectedIndex });
   };
 
   render() {
@@ -46,6 +55,7 @@ export default class App extends React.Component {
             <Text style={styles.modalText}>Yo! You Clicked It!</Text>
           </View>
         </Modal>
+        <TestBar />
       </ApplicationProvider>
     );
   }
